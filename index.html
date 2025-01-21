@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cognifai</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7f9;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #002855;
+            padding: 15px 20px;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+            justify-content: flex-start;
+        }
+
+        .navbar ul li {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li:hover {
+            color: #f9a825;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .navbar ul {
+            display: flex;
+        }
+
+        .navbar.active ul {
+            display: none;
+        }
+
+        .navbar.active .hamburger {
+            display: flex;
+        }
+
+        /* Section styles */
+        .section {
+            padding: 80px 20px; /* Ajustado para no quedar demasiado pegado a los bordes */
+            text-align: center;
+            height: 100vh;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+
+        #about {
+            background: #f0f5fc;
+        }
+
+        #services {
+            background: #eaf4fc;
+        }
+
+        #seminars {
+            background: #ffffff;
+        }
+
+        #contact {
+            background: #f7fbe8;
+            padding-bottom: 50px; /* Agregado para evitar que se corte el contenido en dispositivos pequeños */
+        }
+
+        .seminar-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            margin: 15px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .seminar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .seminar-card h3 {
+            margin-top: 0;
+            color: #002855;
+        }
+
+        .seminar-card p {
+            color: #555;
+        }
+
+        /* Footer styles */
+        footer {
+            background: #002855;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #f9a825;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                background: #002855;
+                padding: 20px;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                border-radius: 0 0 8px 8px;
+            }
+
+            .navbar.active ul {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .seminar-card {
+                margin: 10px auto;
+                width: 90%;
+            }
+
+            .navbar ul li {
+                padding: 10px;
+            }
+
+            .navbar h1 {
+                font-size: 1.6em;
+            }
+
+            #contact {
+                padding: 50px 20px; /* Mejora la visualización en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>Cognifai</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li onclick="scrollToSection('about')">¿Quiénes somos?</li>
+            <li onclick="scrollToSection('services')">¿Qué ofrecemos?</li>
+            <li onclick="scrollToSection('seminars')">Seminarios</li>
+            <li onclick="scrollToSection('contact')">Contacto</li>
+        </ul>
+    </nav>
+
+    <!-- Sections -->
+    <section id="about" class="section active">
+        <h2>¿Quiénes somos?</h2>
+        <p>En Cognifai, transformamos conocimientos avanzados en herramientas prácticas para el crecimiento empresarial. Diseñamos experiencias de formación, optimización y desarrollo basadas en inteligencia artificial y estrategias de mercado.</p>
+    </section>
+
+    <section id="services" class="section">
+        <h2>¿Qué ofrecemos?</h2>
+        <p>Ofrecemos capacitaciones, seminarios y servicios diseñados para potenciar habilidades clave en el ámbito empresarial y publicitario, con un enfoque tecnológico innovador.</p>
+    </section>
+
+    <section id="seminars" class="section">
+        <h2>Seminarios</h2>
+        <div class="seminar-card">
+            <h3>Diseño Computacional Asistido por IA</h3>
+            <p>Domina herramientas de IA para crear diseños visuales impactantes.</p>
+        </div>
+        <div class="seminar-card">
+            <h3>Neuromarketing con IA</h3>
+            <p>Aplica estrategias basadas en datos para optimizar la conexión emocional con tu audiencia.</p>
+        </div>
+        <div class="seminar-card">
+            <h3>Gestión Estratégica de Medios con IA</h3>
+            <p>Maximiza el ROI con plataformas de compra programática.</p>
+        </div>
+        <div class="seminar-card">
+            <h3>Ventas Inteligentes</h3>
+            <p>Utiliza técnicas respaldadas por IA para mejorar tus habilidades de cierre.</p>
+        </div>
+        <div class="seminar-card">
+            <h3>Productividad Asistida por la IA</h3>
+            <p>Implementa soluciones de IA para optimizar procesos y mejorar resultados.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contacto</h2>
+        <p>Para más información, visita nuestro sitio web o contáctanos directamente.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Cognifai. Todos los derechos reservados. <a href="#">Términos y Condiciones</a></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Función para desplazarse suavemente hacia la sección
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+
+            // Cerrar el menú hamburguesa (si está abierto)
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.remove('active');
+        }
+
+        // Función para alternar la visibilidad del menú de hamburguesa
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
+        }
+
+        // Cerrar el menú al cargar la página (si está abierto)
+        window.addEventListener('load', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.remove('active');
+        });
+    </script>
+
+</body>
+</html>
