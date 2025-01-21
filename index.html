@@ -18,7 +18,7 @@
         /* Navbar styles */
         .navbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* Cambiado para mover el navbar a la izquierda */
             align-items: center;
             background: #002855;
             padding: 15px 20px;
@@ -34,6 +34,7 @@
         .navbar h1 {
             margin: 0;
             font-size: 1.8em;
+            cursor: pointer;
         }
 
         .navbar ul {
@@ -177,6 +178,7 @@
 
             .hamburger {
                 display: flex;
+                left: 10px; /* Ajustado para que el menú de hamburguesa esté más a la izquierda */
             }
 
             .seminar-card {
@@ -202,7 +204,7 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <h1>Cognifai</h1>
+        <h1 onclick="scrollToSection('about')">Cognifai</h1> <!-- Redirige al hacer clic en "Cognifai" -->
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
             <div></div>
